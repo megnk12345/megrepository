@@ -1,0 +1,186 @@
+	/*@import url('https://fonts.googleapis.com/css?family=poppins:400,500,700');
+
+*/
+
+
+*{	
+	position: relative;
+	box-sizing:border-box;
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	height:100%;
+	width:100%;
+	font-family: "poppins", sans-serif,"Lato";
+	color: #222;
+	background-size: cover;
+}
+
+}
+header, nav, section, aside, footer, article { display: block;
+	
+}
+
+
+.logo{
+	width:4rem; 
+	height:3rem; 
+	/*-webkit-animation: spin 5s linear infinite;*/
+}
+
+
+
+.jumbotron{
+	padding: 1rem;
+	border-radius: 0;
+}
+.bg-unique{
+	background: #3f729b;
+}
+.bg-dash{
+	background-color:darkblue;
+}
+
+
+.display-6 {
+    font-size:1.5rem;
+    font-weight:150;
+    line-height:.9;
+}
+
+
+
+	
+
+	
+	/* Bootstrap 4 text input with search icon */
+
+
+
+.fixed{
+    position: fixed;
+}
+.left{
+    float: left !important;
+}
+.right{
+    float: right !important;
+}
+.middle{
+	float: center !important;
+}
+
+
+.changePassword{
+    box-shadow: 0 6px 15px 0 #0000001a;
+    padding: 10px 15px;
+
+}
+
+.changePassword h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.w3layouts-header {
+    background:green;
+}
+.navbar-light .navbar-brand {
+   color:#fff;
+}
+a.navbar-brand {
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 1px;
+    display: initial;
+	color:#fff;
+}
+.navbar-light .nav-link .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+    color: #fff;
+}
+.dropdown-menu.show {
+    text-align: center;
+    background: #000;
+}
+.dropdown-item {
+    color: #ffffff;
+}
+.dropdown-divider {
+    background-color: #000000;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+   color: #ff3d00;
+    text-decoration: none;
+    background-color: #000000;
+}
+.dropdown-item.active, .dropdown-item:active {
+    color: #ff3d00;
+    text-decoration: none;
+    background-color: #000000;
+}
+
+
+.form-login {
+	max-width: 500px;
+	padding: 19px 29px 29px;
+	margin: 0 auto;
+	background-color: #fff;	
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	box-shadow: 0 1px 2px rgba(0,0,0,.05);			
+	font-family:Tahoma, Geneva, sans-serif;
+	color:#990000;
+	font-weight:lighter;
+}
+.form-login .form-login-heading {
+    color:#00A2D1;
+}
+.form-login input[type="text"],
+.form-login input[type="password"],
+.form-login input[type="email"] {
+    font-size: 16px;
+    height: 45px;
+    padding: 7px 9px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media queries*/
+@media (max-width: 992px){
+	.social a{
+	font-size: 4rem;
+	padding: 1.5rem;
+
+}
+}
+@media(max-width: 768px){
+	.social a{
+	font-size: 3rem;
+	padding: 1.0rem;
+}
+
+}
+
+@media(max-width: 576px) {
+		.social a{
+	font-size: 2rem;
+	padding: 0.6rem;
+}
+}
