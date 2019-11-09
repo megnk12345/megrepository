@@ -7,8 +7,8 @@ $select=mysqli_query($conn, "SELECT * FROM login WHERE id= '$id'");
 $row=mysqli_num_rows($select);
 $fetch=mysqli_fetch_array($select);
 $surname=$fetch['surname'];
-$othername=$fetch['othername'];
-$name=$surname." ".$othername;
+$other_name=$fetch['othername'];
+$name=$surname." ".$other_name;
 
 $usertype=$fetch['usertype'];
 

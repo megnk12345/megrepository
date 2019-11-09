@@ -17,6 +17,7 @@ if(isset($_POST['submit']))
     $phone=$_POST['phone'];
     $image = $_FILES['image']['name'];
     $tmp_name= $_FILES['image']['tmp_name'];
+	
     
      //FORM VALIDATION 
     if(empty($sname)){
@@ -42,26 +43,21 @@ if(isset($_POST['submit']))
     }
      if(empty($image)){
         $error9="<span class='error'>Profile image required</span>";
-    }
-        else
-        {
+    }else{
           $file_ext=explode('.', $image);
             $image_ext=$file_ext['1'];
-            $image=(rand(1,1000).time().".".$image_ext);
+            $image="../uploads/".(rand(1,1000).time().".".$image_ext);
+		
             
-            if($image_ext=='jpg' || $image_ext=='JPG'|| $image_ext=='jpeg'|| 
-            $image_ext=='JPEG'|| $image_ext=='png' ||$image_ext=='PNG')
+            if($image_ext != 'jpg' && $image_ext != 'JPG' && $image_ext != 'jpeg' && 
+            $image_ext != 'JPEG' && $image_ext != 'png' && $image_ext != 'PNG')
             {
-
-            } 
-
-            else
-            {
-                $error9="<span class='error'>Unsupported image format</span>";
-            }
-            //checkments the inputed fields
-            $check=mysqli_query($conn, "SELECT * FROM login WHERE username='$uname'");
-              $row=mysqli_num_rows($check);
+				
+			$error9="<span class='error'>Unsupported image format</span>";
+            }else {
+                //checkments the inputed fields
+            $check = mysqli_query($conn, "SELECT * FROM login WHERE username='$uname'");
+              $row = mysqli_num_rows($check);
             if($row > 0)
             {
                 $error8="<span class='error'>Username already taken</span>";
@@ -69,9 +65,10 @@ if(isset($_POST['submit']))
 
             else
             {
-                $insert= mysqli_query($conn,"INSERT INTO 
-                            login (username, usertype, password, email, phone, surname, othername, profile_image)
-                        VALUES('$uname','$utype', '$password', '$email', '$phone', '$sname','$othername' '$image')");
+			
+                $insert = mysqli_query($conn,"INSERT INTO 
+                            login (usertype, username, password, email, phone, surname, othername, profile_image)
+                        VALUES('$utype','$uname', '$password', '$email', '$phone', '$sname','$othername', '$image')");
                         if($insert)
                         {
                             move_uploaded_file($tmp_name, '../uploads/'.$image);
@@ -79,6 +76,8 @@ if(isset($_POST['submit']))
                             $uname=''; $utype=''; $password=''; $email=''; $phone=''; $sname=''; $othername=''; $image=''; 
                         }
             }
+            }
+           
            
         }
 
@@ -99,48 +98,54 @@ if(isset($_POST['submit']))
 <!-- End of Sidebar -->
 <!-- Content Wrapper -->
 <!-- Begin Page Content -->
-
+<style type="text/css">
+.error{
+	font-size:12px;
+	color:red
+}
+</style>
     <div class="container-fluid">
-        <form method="POST" enctype="multipart/form-data">
-          <div><p><?php echo $error8;?></p></div>
+        <form actio="#" method="POST" enctype="multipart/form-data">
+          
           <div>
-            <input type="text" name="sname" value="<?php echo $sname;?>" placeholder="your surname"><br/><br/>
-            <?php echo $error1;?>
+            <input type="text" name="sname" value="<?php echo @$sname;?>" placeholder="your surname"><br/>
+            <?php echo $error1;?><br/><br/>
           </div>
 
           <div>
-              <input type="text" name="othername" value="<?php echo $othername;?>"placeholder="your othername"><br/><br/>
-              <?php echo $error2;?>
+              <input type="text" name="othername" value="<?php echo @$othername;?>"placeholder="your othername"><br/>
+              <?php echo $error2;?><br/><br/>
           </div>
 
           <div>
-            <input type="text" name="uname"value="<?php echo $uname;?>" placeholder="enter username" ><br/><br/>
-            <?php echo $error3;?>
+            <input type="text" name="uname"value="<?php echo @$uname;?>" placeholder="enter username" ><br/>
+           <?php echo $error3;?><br/><br/>
           </div>
 
           <div>
-            <input type="password" name="pass"value="<?php echo $password;?>"placeholder="type password"><br/><br/>
-            <?php echo $error4;?>
+            <input type="email" name="email" value="<?php echo @$email;?>" placeholder="enter email"><br/>
+            <?php echo $error6;?><br/><br/>
           </div>
 
           <div>
-            <input type="password" name="cpass" value="<?php echo $cpassword;?>" placeholder="confirm password"><br/><br/>
-            <?php echo $error5;?>
-          </div>
-
-          <div>
-            <input type="email" name="email" value="<?php echo $email;?>" placeholder="enter email"><br/><br/>
-            <?php echo $error6;?>
-          </div>
-
-          <div>
-            <input type="phone" name="phone" value="<?php echo $phone;?>" placeholder="type phone"><br/><br/>
-            <?php echo $error7;?>
+            <input type="phone" name="phone" value="<?php echo @$phone;?>" placeholder="type phone"><br/>
+            <?php echo $error7;?><br/><br/>
           </div>
           <div>
-            <input type="file" name="image" value="<?php echo $image;?>"><br/><br/>
-            <?php echo $error9;?>
+            <input type="file" name="image"><br/>
+            <?php echo $error9;?><br/><br/>
           </div> 
+		  
+		  <div>
+            <input type="password" name="pass" placeholder="type password"><br/>
+            <?php echo $error4;?><br/><br/>
+          </div>
+
+          <div>
+            <input type="password" name="cpass" placeholder="confirm password"><br/><br/>
+            <?php echo $error5;?><br/>
+          </div>
+		  
           <button type="submit" name="submit">
               REGISTER
           </button>
