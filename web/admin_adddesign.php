@@ -114,7 +114,7 @@ session_start();
         <div class="container-fluid">
         <form method="POST" enctype="multipart/form-data">
         <div class='form-group'>
-        <input type="file" name="image" placeholder="Design type"><br/><br/>
+        <input id="file" type="file" name="image" placeholder="Design type"><br/><br/>
         </div>
         <div class='form-group'>
             <select name="category">
