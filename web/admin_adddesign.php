@@ -51,46 +51,47 @@ session_start();
             if($design_ext=='jpg' && $design_ext=='JPG' && $design_ext=='jpeg' && 
             $design_ext=='JPEG' && $design_ext=='png' && $design_ext=='PNG')
             {
-				array_push($error, "Unsupported file format");
+				 $error1="<span class='error'>Unsupported file format</span>";
+				 
             } 
 
             else
             {
                 
             
+			move_uploaded_file($tmp_name, 'uploads/'.$design_name);
             if($category == "card")
             {
-				move_uploaded_file($tmp_name, 'uploads/'.$design_name);
                $insert=mysqli_query($conn,"INSERT INTO cards (designer_id, image, description)
                                    VALUES('$designer_id', '$design', '$description') ");
             }
             if($category == "calendar")
             {
-				move_uploaded_file($tmp_name, 'uploads/'.$design_name);
+				
                $insert=mysqli_query($conn,"INSERT INTO calendars (designer_id, image, description)
                                    VALUES('$designer_id', '$design', '$description') ");
             }
             if($category == "background")
             {
-				move_uploaded_file($tmp_name, 'uploads/'.$design_name);
+				
                $insert=mysqli_query($conn,"INSERT INTO backgrounds (designer_id, image, description)
                                    VALUES('$designer_id', '$design', '$description') ");
             }
             if($category == "template")
             {
-				move_uploaded_file($tmp_name, 'uploads/'.$design_name);
+				
                $insert=mysqli_query($conn,"INSERT INTO templates (designer_id, image, description)
                                    VALUES('$designer_id', '$design', '$description') ");
             }
             if($category == "others")
             {
-				move_uploaded_file($tmp_name, 'uploads/'.$design_name);
+				
                $insert=mysqli_query($conn,"INSERT INTO others (designer_id, image, description)
                                    VALUES('$designer_id', '$design', '$description') ");
             }
             if($category == "certificate")
             {
-				move_uploaded_file($tmp_name, 'uploads/'.$design_name);
+				
                $insert=mysqli_query($conn,"INSERT INTO certificates (designer_id, image, description)
                                    VALUES('$designer_id', '$design', '$description') ");
             }

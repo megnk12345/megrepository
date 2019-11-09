@@ -43,13 +43,14 @@ session_start();
             if($design_ext=='jpg' || $design_ext=='JPG'|| $design_ext=='jpeg'|| 
             $design_ext=='JPEG'|| $design_ext=='png' ||$design_ext=='PNG')
             {
-
+				$error1="<span class='error'>Unsupported file format</span>";
             } 
 
             else
             {
-                array_push($error, "Unsupported file format");
-            }
+                
+           
+			move_uploaded_file($tmp_name, 'uploads/'.$design_name);
             if($category == "card")
             {
                $insert=mysqli_query($conn,"INSERT INTO cards (designer_id, image, description)
@@ -82,12 +83,12 @@ session_start();
             }
             if($insert)
             {
-                move_uploaded_file($tmp_name, 'uploads/'.$design_name);
+                
                 echo '<script> alert("design uploaded successfully") </script>';
             }
         }
     }
-
+ }
 
     
  ?>
