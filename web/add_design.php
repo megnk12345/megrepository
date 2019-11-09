@@ -3,8 +3,7 @@
 session_start();
     include('session.php');
 
-    //empty array
-    $error=array();
+   $error1=''; $error2=''; $error3='';
      $designer_id=$_SESSION['id'];
 
     if(isset($_POST['submit']))
@@ -20,21 +19,26 @@ session_start();
                     //display error massege
        if(empty($design))
         {
-            array_push($error, 'please enter your design ');
+            $error1="<span class='error'>please select your design</span>";
         }
         if(empty($description))
         {
-            array_push($error, 'please enter your design description');
+            $error2="<span class='error'>please enter your design description</span>";
         }
+        if(empty($category)){
+			$error3="<span class='error'>please select design type</span>";
+		}
         /*if($size_design > 1000000)
         {
-           array_push($error, "file size can not be more than 1mb" ); 
+           $error1="<span class='error'>file size can not be more than 1mb</span>";
+		 
         }*/
-        else if (count($error)==0)
+        else 
         {
             $file_ext=explode('.', $design);
             $design_ext=$file_ext['1'];
-            $design=(rand(1,1000).time().".".$design_ext);
+            $design_name=(rand(1,1000).time().".".$design_ext);
+            $design="uploads/".$design_name;
             
             if($design_ext=='jpg' || $design_ext=='JPG'|| $design_ext=='jpeg'|| 
             $design_ext=='JPEG'|| $design_ext=='png' ||$design_ext=='PNG')
@@ -78,7 +82,7 @@ session_start();
             }
             if($insert)
             {
-                move_uploaded_file($tmp_name, 'uploads/'.$design);
+                move_uploaded_file($tmp_name, 'uploads/'.$design_name);
                 echo '<script> alert("design uploaded successfully") </script>';
             }
         }
@@ -101,28 +105,36 @@ session_start();
     <!-- End of Sidebar -->
 <!-- Content Wrapper -->
   
-
+<style type="text/css">
+.error{
+	font-size:12px;
+	color:red
+}
+</style>
       
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <form method="POST" enctype="multipart/form-data">
         <div class='form-group'>
-        <input type="file" name="image" placeholder="Design type"><br/><br/>
+        <input type="file" name="image" placeholder="Design type" required="required"><br/>
+		<?php echo $error1;?><br/>
         </div>
         <div class='form-group'>
-            <select name="category">
+            <select name="category" required="required">
                 <option value="">choose design type</option>
                 <option value="card">card</option>
                 <option value="calendar">calendar</option>
                 <option value="certificate">certificate</option>
                 <option value="background">background</option>
                 <option value="others">others</option>
-                <option value="template">template</option>
+                <option value="template">template</option><br/>
             </select>
+			<?php echo $error3;?><br/><br/>
         </div>
         <div class='form-group'>
-        <input type="text" name="description"  placeholder="Design description"><br/><br/>
+        <input type="text" name="description"  placeholder="Design description" required="required"><br/>
+		<?php echo $error2;?><br/><br/>
         </div>
         <div class='form-group'>
         <button class="btn btn-success" type="submit" name="submit">

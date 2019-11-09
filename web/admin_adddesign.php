@@ -125,11 +125,11 @@ session_start();
         <div class="container-fluid">
         <form method="POST" enctype="multipart/form-data">
         <div class='form-group'>
-        <input id="file" type="file" name="image" placeholder="Design type"><br/>
-		<?php echo $error1;?><br/><br/>
+        <input id="file" type="file" name="image" placeholder="Design type" required="required"><br/>
+		<?php echo $error1;?><br/>
         </div>
         <div class='form-group'>
-            <select name="category">
+            <select name="category" required="required">
                 <option value="">choose design type</option>
                 <option value="card">card</option>
                 <option value="calendar">calendar</option>
@@ -141,7 +141,7 @@ session_start();
 			<?php echo $error2;?><br/><br/>
         </div>
         <div class='form-group'>
-        <input type="text" name="description"  placeholder="Design description"><br/>
+        <input type="text" name="description"  placeholder="Design description" required="required"><br/>
         <?php echo $error3;?><br/><br/>
 		</div>
         <div class='form-group'>

@@ -109,41 +109,41 @@ if(isset($_POST['submit']))
         <form actio="#" method="POST" enctype="multipart/form-data">
           
           <div>
-            <input type="text" name="sname" value="<?php echo @$sname;?>" placeholder="your surname"><br/>
+            <input type="text" name="sname" value="<?php echo @$sname;?>" placeholder="your surname" required="required"><br/>
             <?php echo $error1;?><br/><br/>
           </div>
 
           <div>
-              <input type="text" name="othername" value="<?php echo @$othername;?>"placeholder="your othername"><br/>
+              <input type="text" name="othername" value="<?php echo @$othername;?>"placeholder="your othername" required="required"><br/>
               <?php echo $error2;?><br/><br/>
           </div>
 
           <div>
-            <input type="text" name="uname"value="<?php echo @$uname;?>" placeholder="enter username" ><br/>
+            <input type="text" name="uname"value="<?php echo @$uname;?>" placeholder="enter username" required="required"><br/>
            <?php echo $error3;?><br/><br/>
           </div>
 
           <div>
-            <input type="email" name="email" value="<?php echo @$email;?>" placeholder="enter email"><br/>
+            <input type="email" name="email" value="<?php echo @$email;?>" placeholder="enter email" required="required"><br/>
             <?php echo $error6;?><br/><br/>
           </div>
 
           <div>
-            <input type="phone" name="phone" value="<?php echo @$phone;?>" placeholder="type phone"><br/>
+            <input type="phone" name="phone" value="<?php echo @$phone;?>" placeholder="type phone" required="required"><br/>
             <?php echo $error7;?><br/><br/>
           </div>
           <div>
-            <input type="file" name="image"><br/>
+            <input type="file" name="image" required="required"><br/>
             <?php echo $error9;?><br/><br/>
           </div> 
 		  
 		  <div>
-            <input type="password" name="pass" placeholder="type password"><br/>
+            <input type="password" name="pass" placeholder="type password" required="required"><br/>
             <?php echo $error4;?><br/><br/>
           </div>
 
           <div>
-            <input type="password" name="cpass" placeholder="confirm password"><br/><br/>
+            <input type="password" name="cpass" placeholder="confirm password" required="required"><br/><br/>
             <?php echo $error5;?><br/>
           </div>
 		  
