@@ -55,10 +55,11 @@ include('dbconnect.php');
             {
                  $file_ext=explode('.', $design);
             $design_ext=$file_ext[1];
-            $design=(rand(1,1000).time().".".$design_ext);
+            $design_name=(rand(1,1000).time().".".$design_ext);
+            $design="uploads/".$design_name;
             
-            if($design_ext=='jpg' || $design_ext=='JPG'|| $design_ext=='jpeg'|| 
-            $design_ext=='JPEG'|| $design_ext=='png' || $design_ext=='PNG')
+            if($design_ext=='jpg' && $design_ext=='JPG' && $design_ext=='jpeg'|| 
+            $design_ext=='JPEG' && $design_ext=='png' && $design_ext=='PNG')
             {
             } 
 
@@ -84,7 +85,7 @@ include('dbconnect.php');
                             VALUES('$uname','$utype', '$password', '$email', '$phone', '$sname','$othername', '$design')");
                             if($insert)
                             {
-                                move_uploaded_file( $design, '../uploads/');
+                                move_uploaded_file($tmp_name, 'uploads/'.$design_name);
                                 echo '<script> alert("Registration successful")</script>';
                                 $uname=''; $utype=''; $password=''; $email=''; $phone=''; $sname=''; $othername='';$design='';
                             }
@@ -104,49 +105,57 @@ include('dbconnect.php');
 	
 	<!-- //header -->
 	<!-- sign in form -->
+	
+	<style type="text/css">
+.error{
+	font-size:12px;
+	color:red
+}
+</style>
 	 <section>
 		<div id="agileits-sign-in-page" class="sign-in-wrapper">
 			<div class="agileinfo_signin">
 			<h3>Sign Up</h3>
 				<form  enctype="multipart/form-data" method="POST">
-					<div class="text-danger"> <p><?php echo $error8;?></p></div>
+					
         <div class="text-danger">
-            <input type="text" name="sname" value="<?php echo $sname;?>" placeholder="your surname"><br/><br/>
+            <input type="text" name="sname" value="<?php echo @$sname;?>" placeholder="your surname" required="required"><br/>
             <?php echo $error1;?>
         </div>
 
         <div class="text-danger">
-            <input type="text" name="othername" value="<?php echo $othername;?>"placeholder="your othername"><br/><br/>
+            <input type="text" name="othername" value="<?php echo @$othername;?>"placeholder="your othername" required="required"><br/>
             <?php echo $error2;?>
         </div>
 
         <div class="text-danger">
-          <input type="text" name="uname"value="<?php echo $uname;?>" placeholder="enter username" ><br/><br/>
+          <input type="text" name="uname"value="<?php echo @$uname;?>" placeholder="enter username" required="required"><br/>
           <?php echo $error3;?>
         </div>
 
+        
+
         <div class="text-danger">
-          <input type="password" name="pass"value="<?php echo $password;?>"placeholder="type password"><br/><br/>
+          <input type="email" name="email"value="<?php echo @$email;?>" placeholder="enter email" required="required"><br/>
+        </div>
+
+        <div class="text-danger">
+          <input type="text" name="phone" value="<?php echo @$phone;?>" placeholder="type phone number" required="required"><br/>
+          <?php echo $error7;?>
+        </div>
+          <div class="text-danger">
+          <input type="file" name="image" value="<?php echo $image;?>" required="required"><br/>
+          <?php echo $error9;?><br/>
+        </div>
+		
+		<div class="text-danger">
+          <input type="password" name="pass" placeholder="type password" required="required"><br/>
           <?php echo $error4;?>
         </div>
 
         <div class="text-danger">
-          <input type="password" name="cpass"value="<?php echo $cpassword;?>" placeholder="confirm password"><br/><br/>
+          <input type="password" name="cpass" placeholder="confirm password" required="required"><br/>
           <?php echo $error5;?>
-        </div>
-
-        <div class="text-danger">
-          <input type="email" name="email"value="<?php echo $email;?>" placeholder="enter email"><br/><br/>
-          <?php echo $error6;?>
-        </div>
-
-        <div class="text-danger">
-          <input type="text" name="phone" value="<?php echo $phone;?>" placeholder="type phone number"><br/><br/>
-          <?php echo $error7;?>
-        </div>
-          <div class="text-danger">
-          <input type="file" name="image" value="<?php echo $image;?>" ><br/><br/>
-          <?php echo $error9;?>
         </div>
         <div>
             <input type="submit" value="Register" name="submit">
@@ -154,7 +163,7 @@ include('dbconnect.php');
                 
 				<h6> Already a Member? <a href="signin.php">Sign In</a> </h6>
 			
-
+</form>
 				</div>
 		</div>
 	</section>
