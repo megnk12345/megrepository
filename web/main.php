@@ -43,7 +43,7 @@ include('session.php');
    
             
               <div class="card text text-white" style="height:50%;">
-              <img style="" class="card-img-top d-block w-100  img-responsive" src="uploads/<?php echo $design;?>">
+              <img style="" class="card-img-top d-block w-100  img-responsive" src="<?php echo $design;?>">
               
           
           </div>

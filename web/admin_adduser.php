@@ -46,7 +46,8 @@ if(isset($_POST['submit']))
     }else{
           $file_ext=explode('.', $image);
             $image_ext=$file_ext['1'];
-            $image="../uploads/".(rand(1,1000).time().".".$image_ext);
+            $image_name=(rand(1,1000).time().".".$image_ext);
+            $image="uploads/".$image_name;
 		
             
             if($image_ext != 'jpg' && $image_ext != 'JPG' && $image_ext != 'jpeg' && 
@@ -71,7 +72,7 @@ if(isset($_POST['submit']))
                         VALUES('$utype','$uname', '$password', '$email', '$phone', '$sname','$othername', '$image')");
                         if($insert)
                         {
-                            move_uploaded_file($tmp_name, '../uploads/'.$image);
+                            move_uploaded_file($tmp_name, 'uploads/'.$image_name);
                             echo '<script> alert("Registration successful")</script>';
                             $uname=''; $utype=''; $password=''; $email=''; $phone=''; $sname=''; $othername=''; $image=''; 
                         }
