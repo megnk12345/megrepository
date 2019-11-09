@@ -37,7 +37,7 @@ $row=mysqli_num_rows($select);
 			
 		echo'<div class="col-md-3" style="display:inline-block;">
 			<div class="card">
-			<a href="comment.php?vid='.$fetch['calendar_id'].'"><img class="card-img-top" style="height:15rem;" src="uploads/'.$fetch['image'].'"></a>
+			<a href="comment.php?vid='.$fetch['calendar_id'].'"><img class="card-img-top" style="height:15rem;" src="'.$fetch['image'].'"></a>
 			<div class="card-body text-center">
 			<h6 class="card-title"> Description:'." ".$fetch['description'].'</h6>
 			
