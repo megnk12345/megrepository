@@ -58,15 +58,15 @@ include('dbconnect.php');
             $design_name=(rand(1,1000).time().".".$design_ext);
             $design="uploads/".$design_name;
             
-            if($design_ext=='jpg' && $design_ext=='JPG' && $design_ext=='jpeg'|| 
-            $design_ext=='JPEG' && $design_ext=='png' && $design_ext=='PNG')
+            if($design_ext != 'jpg' && $design_ext != 'JPG' && $design_ext != 'jpeg' && 
+            $design_ext !='JPEG' && $design_ext !='png' && $design_ext != 'PNG')
             {
+				$error9="<span class='error'>Unsupported image format</span>";
             } 
 
             else
             {
-                $error9="<span class='error'>Unsupported image format</span>";
-            }
+                
                
 
                 //checkments the inputed fields
@@ -93,7 +93,8 @@ include('dbconnect.php');
                
             }
 
-
+}
+            
     }
 ?>
 </head>
