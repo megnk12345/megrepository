@@ -79,13 +79,13 @@ include('dbconnect.php');
 
                 else
                 {
-
+					move_uploaded_file($tmp_name, 'uploads/'.$design_name);
                     $insert= mysqli_query($conn,"INSERT INTO 
                                 login (username, usertype, password, email, phone, surname, othername, profile_image)
                             VALUES('$uname','$utype', '$password', '$email', '$phone', '$sname','$othername', '$design')");
                             if($insert)
                             {
-                                move_uploaded_file($tmp_name, 'uploads/'.$design_name);
+                                
                                 echo '<script> alert("Registration successful")</script>';
                                 $uname=''; $utype=''; $password=''; $email=''; $phone=''; $sname=''; $othername='';$design='';
                             }
