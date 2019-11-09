@@ -101,7 +101,7 @@ if(isset($_POST['submit']))
 <!-- Begin Page Content -->
 
     <div class="container-fluid">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
           <div><p><?php echo $error8;?></p></div>
           <div>
             <input type="text" name="sname" value="<?php echo $sname;?>" placeholder="your surname"><br/><br/>
